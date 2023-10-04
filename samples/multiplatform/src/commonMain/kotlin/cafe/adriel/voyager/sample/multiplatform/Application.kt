@@ -7,6 +7,7 @@ import cafe.adriel.voyager.navigator.Navigator
 public fun SampleApplication() {
     Navigator(
         screen = BasicNavigationScreen(index = 0),
+        // TODO Set to null again
         onBackPressed = {
             true
         }
