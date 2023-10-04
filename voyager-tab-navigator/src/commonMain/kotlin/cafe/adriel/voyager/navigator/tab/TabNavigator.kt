@@ -9,6 +9,7 @@ import cafe.adriel.voyager.core.annotation.ExperimentalVoyagerApi
 import cafe.adriel.voyager.core.lifecycle.DisposableEffectIgnoringConfiguration
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
+import cafe.adriel.voyager.navigator.OnBackPressed
 import cafe.adriel.voyager.navigator.compositionUniqueId
 
 public typealias TabNavigatorContent = @Composable (tabNavigator: TabNavigator) -> Unit
@@ -22,6 +23,7 @@ public fun TabNavigator(
     disposeNestedNavigators: Boolean = false,
     tabDisposable: (@Composable (TabNavigator) -> Unit)? = null,
     key: String = compositionUniqueId(),
+    onBackPressed: OnBackPressed = null,
     content: TabNavigatorContent = { CurrentTab() }
 ) {
     Navigator(
@@ -30,7 +32,7 @@ public fun TabNavigator(
             disposeNestedNavigators = disposeNestedNavigators,
             disposeSteps = false
         ),
-        onBackPressed = null,
+        onBackPressed = onBackPressed,
         key = key
     ) { navigator ->
         val tabNavigator = remember(navigator) {

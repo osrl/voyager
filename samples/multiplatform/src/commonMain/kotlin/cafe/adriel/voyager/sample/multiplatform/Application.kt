@@ -7,8 +7,7 @@ import cafe.adriel.voyager.navigator.Navigator
 public fun SampleApplication() {
     Navigator(
         screen = BasicNavigationScreen(index = 0),
-        onBackPressed = { currentScreen ->
-            println("Navigator: Pop screen #${(currentScreen as BasicNavigationScreen).index}")
+        onBackPressed = {
             true
         }
     )
